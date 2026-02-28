@@ -1,6 +1,6 @@
 # Q-volution-Quantum-Harmonic-Oscillators
 
-<img src="imgs/trackC-banner.jpg">
+![logo of Track C: Harmonic Oscillator](imgs/trackC-banner.jpg)
 
 - **Team name:** The Fifth Harmony Bloch Busters.
 
@@ -19,7 +19,7 @@ The task for this challenge is as follows:
 
 ---
 
-## The Mission
+## 🎯 The Mission
 
 Apply the algorithm from the paper [A Quantum Algorithm for Solving Linear Differential Equations: Theory and Experiment (arXiv:1807.04553)](https://arxiv.org/pdf/1807.04553) to a simple, well-understood physical system: the **quantum harmonic oscillator**. Specifically, implement a quantum algorithm to solve:
 
@@ -31,7 +31,7 @@ Explore how varying algorithmic parameters — such as the bounds used in `inpla
 
 ---
 
-## Deliverables
+## 📋 Deliverables
 
 A notebook containing:
 * A quantum program that solves the harmonic oscillator equation using the algorithm from the paper.
