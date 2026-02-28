@@ -2,9 +2,14 @@
 
 <img src="imgs/trackC-banner.jpg">
 
-**Team name:** The Fifth Harmony Bloch Busters.
+- **Team name:** The Fifth Harmony Bloch Busters.
 
-**Team members:** Hari, Julia, Prakriti, [Rodrigo](https://www.linkedin.com/in/rodrigo-segura-moreno/) and Yiwen.
+- **Team members:**
+    - Hari
+    - Julia
+    - Prakriti
+    - [Rodrigo](https://www.linkedin.com/in/rodrigo-segura-moreno/)
+    - Yiwen
 
 This code is our submission regarding *Track C: Harmonic Oscillator* for the **Girls in Quantum** 2026 Hackathon, [*Q-Volution*](https://www.girlsinquantum.com/hackathon).
 
@@ -16,7 +21,7 @@ The task for this challenge is as follows:
 
 ## The Mission
 
-Apply the algorithm from the paper to a simple, well-understood physical system: the **quantum harmonic oscillator**. Specifically, implement a quantum algorithm to solve:
+Apply the algorithm from the paper [A Quantum Algorithm for Solving Linear Differential Equations: Theory and Experiment (arXiv:1807.04553)](https://arxiv.org/pdf/1807.04553) to a simple, well-understood physical system: the **quantum harmonic oscillator**. Specifically, implement a quantum algorithm to solve:
 
 $$ y + \omega^2 y = 0, \quad y(0)=1, \quad y'(0)=1, \quad \omega=1 \,.$$
 
