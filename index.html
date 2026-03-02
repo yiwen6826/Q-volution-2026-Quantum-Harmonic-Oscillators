@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Plots</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e10;
+      --surface: #18181c;
+      --border: #2a2a30;
+      --accent: #c8f060;
+      --accent2: #60c8f0;
+      --accent3: #f060c8;
+      --text: #e8e8e0;
+      --muted: #666660;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 2rem;
+    }
+
+    .github-link {
+      position: fixed;
+      top: 1.25rem;
+      left: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      z-index: 100;
+    }
+
+    .github-link:hover { color: var(--accent); }
+
+    .github-link svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .header-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .header-eyebrow span {
+      color: var(--accent3);
+    }
+
+    header h1.main-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.15em;
+    }
+
+    header h1.main-title .word-the   { color: var(--muted); font-style: normal; }
+    header h1.main-title .word-harmonic { color: var(--accent2); font-style: italic; }
+    header h1.main-title .word-oscillator { color: var(--accent); font-style: italic; }
+
+    .header-divider {
+      width: 2.5rem;
+      height: 1px;
+      background: var(--border);
+      margin: 1.25rem auto;
+    }
+
+    header h2.sub-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      letter-spacing: -0.01em;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    header h2.sub-title span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    header p {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .sections {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    .section {
+      animation: fadeUp 0.6s ease both;
+    }
+    .section:nth-child(1) { animation-delay: 0.1s; }
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.3s; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-index {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 1.9rem;
+      letter-spacing: -0.01em;
+      font-style: italic;
+    }
+
+    .section[data-accent="1"] .section-title { color: var(--accent); }
+    .section[data-accent="2"] .section-title { color: var(--accent2); }
+    .section[data-accent="3"] .section-title { color: var(--accent3); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 800px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.4rem 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px;
+      width: 0;
+      transition: width 0.3s ease;
+    }
+
+    .section[data-accent="1"] .card::after  { background: var(--accent); }
+    .section[data-accent="2"] .card::after  { background: var(--accent2); }
+    .section[data-accent="3"] .card::after  { background: var(--accent3); }
+
+    .section[data-accent="1"] .card:hover { border-color: var(--accent); }
+    .section[data-accent="2"] .card:hover { border-color: var(--accent2); }
+    .section[data-accent="3"] .card:hover { border-color: var(--accent3); }
+
+    .card:hover { transform: translateY(-3px); }
+    .card:hover::after { width: 100%; }
+
+    .param-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .param-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .section[data-accent="1"] .param-name { color: var(--accent); }
+    .section[data-accent="2"] .param-name { color: var(--accent2); }
+    .section[data-accent="3"] .param-name { color: var(--accent3); }
+
+    .arrow {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-size: 0.85rem;
+      color: var(--border);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .section[data-accent="1"] .card:hover .arrow { color: var(--accent); }
+    .section[data-accent="2"] .card:hover .arrow { color: var(--accent2); }
+    .section[data-accent="3"] .card:hover .arrow { color: var(--accent3); }
+
+    .card:hover .arrow { transform: translate(3px, -3px); }
+
+    .card.disabled {
+      background: #111113;
+      border-color: #1e1e22;
+      cursor: not-allowed;
+      transform: none !important;
+      opacity: 0.45;
+    }
+
+    .card.disabled::after { display: none; }
+    .card.disabled .param-label { color: #3a3a3e; }
+    .card.disabled .param-name  { color: #3a3a3e; }
+    .card.disabled .arrow       { display: none; }
+
+    .card.disabled .unavailable-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3a3a3e;
+      margin-top: auto;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="github-link" href="https://github.com/yiwen6826/Q-volution-2026-Quantum-Harmonic-Oscillators/" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    GitHub
+  </a>
+
+  <header>
+    <p class="header-eyebrow"><span>Q-Volution</span> Hackathon 2026</p>
+    <h1 class="main-title">
+      <span class="word-the">The</span>
+      <span class="word-harmonic"> Harmonic</span><br>
+      <span class="word-oscillator">Oscillator</span>
+    </h1>
+    <div class="header-divider"></div>
+    <h2 class="sub-title">Interactive <span>Plots</span></h2>
+    <p>3 plot types &nbsp;·&nbsp; 5 parameters each</p>
+  </header>
+
+  <div class="sections">
+
+    <!-- y(t) -->
+    <div class="section" data-accent="1">
+      <div class="section-header">
+        <span class="section-index">01</span>
+        <span class="section-title">y(t)</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="interactive_plots/interactive_y_plot--y0.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">y₀</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">vy₀</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">bx</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_y_plot--by.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">by</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">ω</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- y'(t) -->
+    <div class="section" data-accent="2">
+      <div class="section-header">
+        <span class="section-index">02</span>
+        <span class="section-title">y′(t)</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="interactive_plots/interactive_dydt_plot--y0.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">y₀</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">vy₀</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">bx</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_dydt_plot--by.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">by</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">ω</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Energy -->
+    <div class="section" data-accent="3">
+      <div class="section-header">
+        <span class="section-index">03</span>
+        <span class="section-title">Energy</span>
+      </div>
+      <div class="cards">
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">y₀</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">vy₀</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">bx</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">by</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <span class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">ω</span>
+          <span class="unavailable-label">Unavailable</span>
+        </span>
+        <a class="card" href="interactive_plots/interactive_energy_plot.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">y₀, vy₀, by</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

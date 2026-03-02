@@ -21,10 +21,21 @@ Submodules
     :toctree:
 
     plot
+    table
+    save
 """
+
+# harmonic oscillator
+from .harmony import harmonic_oscillator
 
 # plots
 from .plot import plot_expected_vs_actual
 
 # tables
 from .table import print_table
+
+# save data
+from .save import make_dir
+from .save import data_exists
+from .save import save_data
+from .save import load_data
