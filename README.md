@@ -6,7 +6,7 @@
 
 - **Team members:**
     - Hari
-    - Julia
+    - [Julia](www.linkedin.com/in/julia-huynh-5117b8273)
     - Prakriti
     - [Rodrigo](https://www.linkedin.com/in/rodrigo-segura-moreno/)
     - Yiwen
@@ -38,3 +38,24 @@ A notebook containing:
 * Computed kinetic and potential energy values as functions of time, derived from the simulated output.
 * An investigation of how parameter choices (e.g., amplitude bounds in state preparation) affect energy estimations.
 * A graphical analysis of circuit depth and width under different optimization settings.
+
+## 💡Repository Summary 
+
+### **interactive_plots.html**
+Visit this website to visualize how energies, positions, and velocities of the harmonic oscillator changes with different parameters (e.g. initial position y0, initial velocity vy0, and offset b1) through interactive plots! 
+
+### **Interactive Plot Codes**
+These are the codes associated with the interactive plots for the main html file.
+
+### **Large Data Analysis Code for Varying Parameters** 
+Code for the large dataset generated to analyze overall trends over varying parameters. 
+
+### **Longer Time Code** 
+Jupyter Notebook exploring time parameters for the harmonic oscillator. At high values of t, the expected kinetic and potential energies blow up. We realized that due to symmetry characteristics, we only need to simulate one-fourth of the time period of the oscillator to model energy overall. 
+
+### **Optimal k (approximation order) Plots**
+Jupyter Notebook allowing for arbitrary k parameters for the harmonic oscillator by usage of a padding function. Generally larger k's correspond to smaller error as the Taylor Expansion accuracy increases. 
+  
+ 
+
+
