@@ -27,6 +27,8 @@ Submodules
 """
 
 # harmonic oscillator
+from .harmony import unitary_harmonic_oscillator
+from .harmony import non_unitary_harmonic_oscillator
 from .harmony import harmonic_oscillator
 
 # plots

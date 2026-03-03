@@ -33,11 +33,13 @@ Explore how varying algorithmic parameters — such as the bounds used in `inpla
 
 ## 📋 Deliverables
 
-A notebook containing:
 * A quantum program that solves the harmonic oscillator equation using the algorithm from the paper.
-* Computed kinetic and potential energy values as functions of time, derived from the simulated output.
-* An investigation of how parameter choices (e.g., amplitude bounds in state preparation) affect energy estimations.
+* Computed kinetic and potential energy values as functions of time, derived from the simulated output. Interactive plots for the energy can be found [here](https://yiwen6826.github.io/Q-volution-2026-Quantum-Harmonic-Oscillators/).
+* An investigation of how parameter choices (e.g., amplitude bounds in state preparation) affect energy estimations. Interactive parameter investigation [here](https://yiwen6826.github.io/Q-volution-2026-Quantum-Harmonic-Oscillators/).
 * ~~A graphical analysis of circuit depth and width under different optimization settings.~~
+* Interactive plots to visualize the kinetic and potential energy of the harmonic oscillator, as well as `y(t)` and `y'(t)`.
+* Jupyter Notebook exploring how to simulate for longer time periods.
+* Jupyter Notebook exploring arbitrary values of `k` with plots.
 
 ## 💡 Repository Summary 
 
