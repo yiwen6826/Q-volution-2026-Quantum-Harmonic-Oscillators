@@ -5,11 +5,11 @@
 - **Team name:** The Fifth Harmony Bloch Busters.
 
 - **Team members:**
-    - Hari
+    - [Hari](https://www.linkedin.com/in/hari-krishna-sahoo/)
     - [Julia](https://www.linkedin.com/in/julia-huynh-5117b8273)
-    - Prakriti
+    - [Prakriti](https://www.linkedin.com/in/prakriti-shahi/)
     - [Rodrigo](https://www.linkedin.com/in/rodrigo-segura-moreno/)
-    - Yiwen
+    - [Yiwen](https://www.linkedin.com/in/yiwen-lu-11a60431b/)
 
 This code is our submission regarding *Track C: Harmonic Oscillator* for the **Girls in Quantum** 2026 Hackathon, [*Q-Volution*](https://www.girlsinquantum.com/hackathon).
 
@@ -37,24 +37,36 @@ A notebook containing:
 * A quantum program that solves the harmonic oscillator equation using the algorithm from the paper.
 * Computed kinetic and potential energy values as functions of time, derived from the simulated output.
 * An investigation of how parameter choices (e.g., amplitude bounds in state preparation) affect energy estimations.
-* A graphical analysis of circuit depth and width under different optimization settings.
+* ~~A graphical analysis of circuit depth and width under different optimization settings.~~
 
 ## 💡Repository Summary 
 
-### **- interactive_plots.html**
-Visit this website to visualize how energies, positions, and velocities of the harmonic oscillator changes with different parameters (e.g. initial position y0, initial velocity vy0, and offset b1) through interactive plots! 
+`index.html`
+HTML displaying interactive plots to visualize how energies, positions, and velocities of the harmonic oscillator change with different parameters (initial position `y0`, initial velocity `vy0`, and offset to equilibrium position `b1`) through interactive plots! Visit the GitHub pages website [here](https://yiwen6826.github.io/Q-volution-2026-Quantum-Harmonic-Oscillators/). 
 
-### **- Interactive Plot Codes**
-These are the codes associated with the interactive plots for the main html file.
+- `1_harmonic_oscillator.ipynb`
+Jupyter Notebook explaining the differential equation to solve (harmonic oscillator) and the implementation of the quantum algorithm aforementioned.
 
-### **- Large Data Analysis Code for Varying Parameters** 
-Code for the large dataset generated to analyze overall trends over varying parameters. 
+- `2_interactive_plots.ipynb`
+Jupter Notebook used for creating the interactive plots displayed at our [GitHub pages website](https://yiwen6826.github.io/Q-volution-2026-Quantum-Harmonic-Oscillators/).
 
-### **- Longer Time Code** 
-Jupyter Notebook exploring time parameters for the harmonic oscillator. At high values of t, the expected kinetic and potential energies blow up. We realized that due to symmetry in the periodicity of the solution, we only need to simulate one-fourth of the time period of the oscillator to model energy overall. 
+- `3_time.ipynb`
+Jupyter Notebook exploring time parameters for the harmonic oscillator. At high values of `t`, the expected kinetic and potential energies blow up. We realized that due to symmetry in the periodicity of the solution, we only need to simulate one-fourth of the time period of the oscillator to model energy overall. 
 
-### **- Optimal k (approximation order) Plots**
-Jupyter Notebook allowing for arbitrary k parameters for the harmonic oscillator by usage of a padding function. Generally larger k's correspond to smaller error as the Taylor Expansion accuracy increases. 
+- `fifth_harmony/`
+Custom module which handles the data plotting, saving and loading. Includes a modularized version of the code in `1_harmonic_oscillator.ipynb` via the `harmonic_oscillator` function to simplify the generation of datasets.
+
+- `imgs/`
+Directory with images used throughout the repository only for illustrative purposes.
+
+- `interactive_plots/`
+Directory containing the interactive plots generated with `2_interactive_plots.ipynb` and showcased the repository's [GitHub pages website](https://yiwen6826.github.io/Q-volution-2026-Quantum-Harmonic-Oscillators/).
+
+- `k_plots/`
+Directory containing plots showcasing `k` vs the error (mean, kinetic energy and potential energy).
+
+  - `k_plots/optimal_k.ipynb`
+Jupyter Notebook allowing for arbitrary `k` parameters for the harmonic oscillator by usage of a padding function. Generally larger values of `k` correspond to smaller error as the Taylor Expansion accuracy increases.
   
  
 
