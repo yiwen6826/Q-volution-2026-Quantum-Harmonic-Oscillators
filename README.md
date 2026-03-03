@@ -6,7 +6,7 @@
 
 - **Team members:**
     - Hari
-    - [Julia](www.linkedin.com/in/julia-huynh-5117b8273)
+    - [Julia](https://www.linkedin.com/in/julia-huynh-5117b8273)
     - Prakriti
     - [Rodrigo](https://www.linkedin.com/in/rodrigo-segura-moreno/)
     - Yiwen
