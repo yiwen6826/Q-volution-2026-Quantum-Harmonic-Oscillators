@@ -203,7 +203,7 @@ def harmonic_oscillator(k:int, omega:float, y0:float, vy0:float, bx:float, by:fl
     # To standarize our results, the initial and final time, as well as the time step will be the below fixed values
     t_initial = 0 # initial time
     t_final = 1 # final time
-    t_step = 21 # number of steps to divide [t_initial, t_final]
+    t_step = 11 # number of steps to divide [t_initial, t_final]
     time_range = np.linspace(t_initial, t_final, t_step)
     
     for i, t in enumerate(time_range):

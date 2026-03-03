@@ -77,7 +77,7 @@ def save_data(k:int, omega:float, y0:float, vy0:float, bx:float, by:float, time:
     print(f"All data has been saved at {d}/")
 
 
-def load_data(k:int, omega:float, y0:float, vy0:float, bx:float, by:float, data:str) -> tuple[np.array, np.array, np.array]:
+def load_data(k:int, omega:float, y0:float, vy0:float, bx:float, by:float, data:str, msg:bool=True) -> tuple[np.array, np.array, np.array]:
     """ Loads the data for the expected y and dy/dt
 
     k : order of the Taylor expansion
@@ -92,9 +92,10 @@ def load_data(k:int, omega:float, y0:float, vy0:float, bx:float, by:float, data:
     """
     d = make_dir(k, omega, y0, vy0, bx, by)
     time = np.load(f"{d}/time.npy")
-    y1 = np.load(f"{d}/expected_{data}.npy")
-    y2 = np.load(f"{d}/actual_{data}.npy")
+    y_expected = np.load(f"{d}/expected_{data}.npy")
+    y_actual = np.load(f"{d}/actual_{data}.npy")
 
-    print(f"Data from {d}/ has been loaded")
+    if msg:
+        print(f"Data from {d}/ has been loaded")
     
-    return time, y1, y2
+    return time, y_expected, y_actual

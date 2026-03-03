@@ -292,83 +292,18 @@
 
   <div class="sections">
 
-    <!-- y(t) -->
-    <div class="section" data-accent="1">
-      <div class="section-header">
-        <span class="section-index">01</span>
-        <span class="section-title">y(t)</span>
-      </div>
-      <div class="cards">
-        <a class="card" href="interactive_plots/interactive_y_plot--y0.html">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">y₀</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="card" href="interactive_plots/interactive_y_plot--vy0.html">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">vy₀</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="card disabled">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">bx</span>
-          <span class="unavailable-label">Unavailable</span>
-        </a>
-        <a class="card" href="interactive_plots/interactive_y_plot--by.html">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">by</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="card disabled">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">ω</span>
-          <span class="unavailable-label">Unavailable</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- y'(t) -->
-    <div class="section" data-accent="2">
-      <div class="section-header">
-        <span class="section-index">02</span>
-        <span class="section-title">y′(t)</span>
-      </div>
-      <div class="cards">
-        <a class="card" href="interactive_plots/interactive_dydt_plot--y0.html">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">y₀</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="card" href="interactive_plots/interactive_dydt_plot--vy0.html">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">vy₀</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="card disabled">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">bx</span>
-          <span class="unavailable-label">Unavailable</span>
-        </a>
-        <a class="card" href="interactive_plots/interactive_dydt_plot--by.html">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">by</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="card disabled">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">ω</span>
-          <span class="unavailable-label">Unavailable</span>
-        </a>
-      </div>
-    </div>
-
     <!-- Energy -->
     <div class="section" data-accent="3">
       <div class="section-header">
-        <span class="section-index">03</span>
+        <span class="section-index">01</span>
         <span class="section-title">Energy</span>
       </div>
       <div class="cards">
+        <span class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">ω</span>
+          <span class="unavailable-label">Unavailable</span>
+        </span>
         <a class="card" href="interactive_plots/interactive_energy_plot--y0.html">
           <span class="param-label">Parameter</span>
           <span class="param-name">y₀</span>
@@ -389,14 +324,79 @@
           <span class="param-name">by</span>
           <span class="arrow">↗</span>
         </a>
-        <span class="card disabled">
-          <span class="param-label">Parameter</span>
-          <span class="param-name">ω</span>
-          <span class="unavailable-label">Unavailable</span>
-        </span>
         <a class="card" href="interactive_plots/interactive_energy_plot.html">
           <span class="param-label">Parameter</span>
           <span class="param-name">y₀, vy₀, by</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+      
+    <!-- y(t) -->
+    <div class="section" data-accent="2">
+      <div class="section-header">
+        <span class="section-index">02</span>
+        <span class="section-title">y(t)</span>
+      </div>
+      <div class="cards">
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">ω</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_y_plot--y0.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">y₀</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_y_plot--vy0.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">vy₀</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">bx</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_y_plot--by.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">by</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- y'(t) -->
+    <div class="section" data-accent="1">
+      <div class="section-header">
+        <span class="section-index">03</span>
+        <span class="section-title">y′(t)</span>
+      </div>
+      <div class="cards">
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">ω</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_dydt_plot--y0.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">y₀</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_dydt_plot--vy0.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">vy₀</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="card disabled">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">bx</span>
+          <span class="unavailable-label">Unavailable</span>
+        </a>
+        <a class="card" href="interactive_plots/interactive_dydt_plot--by.html">
+          <span class="param-label">Parameter</span>
+          <span class="param-name">by</span>
           <span class="arrow">↗</span>
         </a>
       </div>
