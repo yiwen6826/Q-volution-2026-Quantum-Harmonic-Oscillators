@@ -16,7 +16,7 @@ import numpy as np
 authenticate()
 
 
-def harmonic_oscillator(k:int, omega:float, y0:float, vy0:float, bx:float, by:float, msg:bool=True) -> tuple[np.array, dict, dict]:
+def harmonic_oscillator(k:int, omega:float, y0:float, vy0:float, b0:float, b1:float, msg:bool=True) -> tuple[np.array, dict, dict]:
     """ Solution for the harmonic oscillator using a modified version of [Ref1]
         which is based on arXiv:1807.04553
 
@@ -24,8 +24,8 @@ def harmonic_oscillator(k:int, omega:float, y0:float, vy0:float, bx:float, by:fl
     omega : frequency
     y0 : initial position
     vy0 : initial velocity
-    bx : shift to velocity
-    by : shift to equilibrium position
+    b0 : shift to velocity
+    b1 : shift to equilibrium position
     
     msg : to print or not to print messages
 
@@ -44,7 +44,7 @@ def harmonic_oscillator(k:int, omega:float, y0:float, vy0:float, bx:float, by:fl
     M = np.array([[0, 1], [-omega**2, 0]])
     
     x0 = np.array([y0, vy0]) # initial vector (pos, vel)
-    b = np.array([bx, by]) # shift to (velocity, equilibrium position)
+    b = np.array([b0, b1]) # shift to (velocity, equilibrium position)
     
     # Norms (used in coefficients)
     x0_norm = np.linalg.norm(x0)
@@ -229,18 +229,18 @@ def harmonic_oscillator(k:int, omega:float, y0:float, vy0:float, bx:float, by:fl
     y_dash_actual = np.array(y_dash)
 
     # Expected energies calculated from the formulas
-    B = y0 - (by / omega**2)
-    C = (vy0 + bx) / omega
+    B = y0 - (b1 / omega**2)
+    C = (vy0 + b0) / omega
     phi = omega*(time_range - t_initial)
-    y_expected = B * np.cos(phi) + C * np.sin(phi) + (by / omega**2) # y(t)
+    y_expected = B * np.cos(phi) + C * np.sin(phi) + (b1 / omega**2) # y(t)
     y_dash_expected = omega * C * np.cos(phi) - omega * B * np.sin(phi) # y'(t)
     
     kinetic_expected = np.square(y_dash_expected) / 2 # KE = (1/2) * (y')^2
-    potential_expected = np.square(omega) * np.square(y_expected - (by / omega**2)) / 2 # PE = (1/2) * ω^2 * [y - (b_y/ω^2)]^2
+    potential_expected = np.square(omega) * np.square(y_expected - (b1 / omega**2)) / 2 # PE = (1/2) * ω^2 * [y - (b_y/ω^2)]^2
     
     # Actual energies calculated from quantum algorithm:
-    kinetic_actual = np.square(y_dash_actual + bx)/2
-    potential_actual = omega**2 * np.square(y_actual - by/omega**2) /2
+    kinetic_actual = np.square(y_dash_actual + b0)/2
+    potential_actual = omega**2 * np.square(y_actual - b1/omega**2) /2
 
     data_expected = {
         "y" : y_expected,
