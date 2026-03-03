@@ -20,6 +20,7 @@ Submodules
 .. autosummary::
     :toctree:
 
+    harmony
     plot
     table
     save

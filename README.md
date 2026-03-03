@@ -39,9 +39,9 @@ A notebook containing:
 * An investigation of how parameter choices (e.g., amplitude bounds in state preparation) affect energy estimations.
 * ~~A graphical analysis of circuit depth and width under different optimization settings.~~
 
-## 💡Repository Summary 
+## 💡 Repository Summary 
 
-`index.html`
+- `index.html`
 HTML displaying interactive plots to visualize how energies, positions, and velocities of the harmonic oscillator change with different parameters (initial position `y0`, initial velocity `vy0`, and offset to equilibrium position `b1`) through interactive plots! Visit the GitHub pages website [here](https://yiwen6826.github.io/Q-volution-2026-Quantum-Harmonic-Oscillators/). 
 
 - `1_harmonic_oscillator.ipynb`
@@ -51,7 +51,16 @@ Jupyter Notebook explaining the differential equation to solve (harmonic oscilla
 Jupter Notebook used for creating the interactive plots displayed at our [GitHub pages website](https://yiwen6826.github.io/Q-volution-2026-Quantum-Harmonic-Oscillators/).
 
 - `3_time.ipynb`
-Jupyter Notebook exploring time parameters for the harmonic oscillator. At high values of `t`, the expected kinetic and potential energies blow up. We realized that due to symmetry in the periodicity of the solution, we only need to simulate one-fourth of the time period of the oscillator to model energy overall. 
+Jupyter Notebook exploring time parameters for the harmonic oscillator. At high values of `t`, the expected kinetic and potential energies blow up. We realized that due to symmetry in the periodicity of the solution, we only need to simulate one-fourth of the time period of the oscillator to model energy overall.
+
+- `4_sweep.ipynb`
+Jupyter Notebook showcasing the behaviour of the kinetic and potential energies for `k = 3, 5, 9`, `y0 = 0, 1, 10` and `vy0 = 0, 1, 10`. As well as the mean accuracy as a function of the Taylor order expansion `k`.
+
+- `5_run_cases.ipynb`
+Jupter Notebook containing a three cell tutorial on how to run the quantum algorithm, save the data and load pre-existing data.
+
+- `sweep_results.csv`
+Data generated from `4_sweep.ipynb`
 
 - `fifth_harmony/`
 Custom module which handles the data plotting, saving and loading. Includes a modularized version of the code in `1_harmonic_oscillator.ipynb` via the `harmonic_oscillator` function to simplify the generation of datasets.
@@ -68,6 +77,8 @@ Directory containing plots showcasing `k` vs the error (mean, kinetic energy and
   - `k_plots/optimal_k.ipynb`
 Jupyter Notebook allowing for arbitrary `k` parameters for the harmonic oscillator by usage of a padding function. Generally larger values of `k` correspond to smaller error as the Taylor Expansion accuracy increases.
   
- 
+ ## How to use this code
 
-
+1. Create a conda environment with Python v3.12.12
+2. `pip install requirements.txt`
+3. Enjoy :-)

@@ -92,9 +92,9 @@ def load_data(k:int, omega:float, y0:float, vy0:float, b0:float, b1:float, data:
         possible values are 'y', 'dydt', 'KE', 'PE'
     """
     d = make_dir(k, omega, y0, vy0, b0, b1)
-    time = np.load(f"{d}/time.npy")
+    time       = np.load(f"{d}/time.npy")
     y_expected = np.load(f"{d}/expected_{data}.npy")
-    y_actual = np.load(f"{d}/actual_{data}.npy")
+    y_actual   = np.load(f"{d}/actual_{data}.npy")
 
     if msg:
         print(f"Data from {d}/ has been loaded")
